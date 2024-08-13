@@ -3,14 +3,14 @@ import 'package:provider/provider.dart';
 import 'package:smallbytes/core/widget/primary_button.dart';
 import 'package:smallbytes/features/profileCreate/ProfileViewModel.dart';
 
-class ProfileScreen extends StatefulWidget {
-  ProfileScreen({super.key});
+class ProfileCreateScreen extends StatefulWidget {
+  ProfileCreateScreen({super.key});
 
   @override
-  State<ProfileScreen> createState() => _ProfileScreenState();
+  State<ProfileCreateScreen> createState() => _ProfileCreateScreenState();
 }
 
-class _ProfileScreenState extends State<ProfileScreen> {
+class _ProfileCreateScreenState extends State<ProfileCreateScreen> {
   late TextEditingController _bioController;
   List<String> userTypes = ["TEACHER", "STUDENT"];
   List<String> availableTags = ["JAVA", "PYTHON", "C++", "FLUTTER", "REACT"];
@@ -61,7 +61,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     PrimaryButton(
                       name: 'upload profile picture',
                       onPressed:() async {
-                        await viewModel.pickAndUploadProfilePicture();
+                        // await viewModel.pickAndUploadProfilePicture();
                       } ,
                     )
                   ,
@@ -119,7 +119,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 15),
                         ),
                         onPressed: () async {
-                          await viewModel.submitProfile();
+                            
+
+                          // await viewModel.submitProfile();
                         },
                         child: const Text('Create Profile', style: TextStyle(fontSize: 18)),
                       ),

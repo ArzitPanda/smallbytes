@@ -1,5 +1,4 @@
 import 'package:flutter/foundation.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:smallbytes/features/profileCreate/service/ProfileService.dart';
 import 'package:smallbytes/features/profileCreate/user_profile.dart';
 
@@ -17,7 +16,6 @@ class ProfileViewModel extends ChangeNotifier {
 
   UserProfile? get userProfile => _userProfile;
 
-  final picker = ImagePicker();
   int bioMaxLength = 150;
 
   void setEmail(String email) {
@@ -55,13 +53,13 @@ class ProfileViewModel extends ChangeNotifier {
   }
 
   Future<void> pickAndUploadProfilePicture() async {
-    final pickedFile = await picker.pickImage(source: ImageSource.gallery);
-    if (pickedFile != null) {
-      final fileUrl = await _profileService.uploadProfilePicture(
-          pickedFile.path, pickedFile.name, "jpg");
-      _userProfile?.profilePictureUrl = fileUrl;
-      notifyListeners();
-    }
+    // final pickedFile = await picker.pickImage(source: ImageSource.gallery);
+    // if (pickedFile != null) {
+    //   final fileUrl = await _profileService.uploadProfilePicture(
+    //       pickedFile.path, pickedFile.name, "jpg");
+    //   _userProfile?.profilePictureUrl = fileUrl;
+    //   notifyListeners();
+    // }
   }
 
   Future<void> submitProfile() async {

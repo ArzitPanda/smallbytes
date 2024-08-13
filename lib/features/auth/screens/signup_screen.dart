@@ -6,7 +6,7 @@ import 'package:smallbytes/features/auth/screens/login_screen.dart';
 import 'package:smallbytes/features/auth/viewModels/auth_view_model.dart';
 import 'package:smallbytes/features/auth/widget/input_login.dart';
 import 'package:smallbytes/features/profileCreate/ProfileViewModel.dart';
-import 'package:smallbytes/features/profileCreate/screen/profile_screen.dart';
+
 import 'package:smallbytes/features/profileCreate/user_profile.dart';
 
 class SignupScreen extends StatefulWidget {
@@ -81,10 +81,10 @@ class _SignupScreenState extends State<SignupScreen> {
                 }),
                 TextButton(
                   onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) =>  ProfileScreen()),
-                    );
+                    // Navigator.push(
+                    //   context,
+                    //   MaterialPageRoute(builder: (context) =>  ProfileScreen()),
+                    // );
 
                   },
                   child: const Text(
