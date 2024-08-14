@@ -17,8 +17,7 @@ void main() {
 
   WidgetsFlutterBinding.ensureInitialized();
  
-  runApp( MainApp()   
-  );
+  runApp( const MainApp() );
 }
 
 class MainApp extends StatelessWidget {
@@ -34,7 +33,7 @@ class MainApp extends StatelessWidget {
       child: MaterialApp(
         theme: ThemeData.from(
             colorScheme: const ColorScheme.light(),
-            textTheme: GoogleFonts.rubikTextTheme()),
+            ),
         home: Scaffold(
           body: Center(
             child: HomeScreen(),

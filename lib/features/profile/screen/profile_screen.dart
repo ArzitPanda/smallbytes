@@ -55,7 +55,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           Column(
 
             children: [
-              PrimaryWrapperWidget(primaryChild: Text("My Courses")),
+              GestureDetector(child: PrimaryWrapperWidget(primaryChild: Text("My Courses")),onTap: (){},),
               SizedBox(height: 20,),
                PrimaryWrapperWidget(primaryChild: Text("Saved")),
                 SizedBox(height: 20,),
