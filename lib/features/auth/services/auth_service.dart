@@ -7,6 +7,8 @@ import 'package:appwrite/models.dart';
 class AuthService {
   final Account _account;
 
+
+
   AuthService(this._account);
 
   Future<User> signUp(String email, String password,String name) async {
@@ -27,9 +29,13 @@ class AuthService {
 
   Future<User?> getUser() async {
     try {
-      return await _account.get();
+      User a = await _account.get();
+      print("${a.name} ${a.$id}");
+
+      return a;
     } catch (e) {
       return null;
     }
+
   }
 }

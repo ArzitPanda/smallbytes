@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smallbytes/core/constant/colors.dart';
+import 'package:smallbytes/core/models/user_model.dart';
 import 'package:smallbytes/core/widget/cutom_card.dart';
 import 'package:smallbytes/core/widget/primary_wrapper_widget.dart';
 import 'package:smallbytes/core/widget/round_button.dart';
@@ -7,7 +8,9 @@ import 'package:smallbytes/features/auth/screens/signup_screen.dart';
 import 'package:smallbytes/features/course/screen/single_course_screen.dart';
 
 class CourseScreen extends StatefulWidget {
-  const CourseScreen({super.key});
+
+  UserModel? userModel;
+  CourseScreen({super.key,required this.userModel});
 
   @override
   State<CourseScreen> createState() => _CourseScreenState();
@@ -41,7 +44,7 @@ class _CourseScreenState extends State<CourseScreen> {
                       height: 5,
                     ),
                     Text(
-                      "Arijit Panda",
+                      widget.userModel!.name ?? "loading...",
                       style: TextStyle(fontSize: 45, fontWeight: FontWeight.bold),
                     )
                   ],
@@ -75,7 +78,7 @@ class _CourseScreenState extends State<CourseScreen> {
               children: [
                 Text("Categories"),
                 Container(
-                  width: MediaQuery.of(context).size.width * .8,
+                  width: MediaQuery.of(context).size.width * .7,
                   height: 56,
                   child: ListView(
                       scrollDirection: Axis.horizontal,

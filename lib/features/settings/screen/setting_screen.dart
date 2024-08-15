@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:smallbytes/core/constant/colors.dart';
+import 'package:smallbytes/core/models/user_model.dart';
 import 'package:smallbytes/core/widget/primary_wrapper_widget.dart';
 import 'package:smallbytes/features/settings/widget/custom_setting_container.dart';
 
 class SettingScreen extends StatefulWidget {
-  const SettingScreen({super.key});
+ UserModel? userModel;
+
+  SettingScreen({super.key,required this.userModel});
 
   @override
   State<SettingScreen> createState() => _SettingScreenState();
@@ -68,7 +71,7 @@ class _SettingScreenState extends State<SettingScreen> {
         
               Column(
                 children: [
-                  CustomSettingContainer(primaryText: "Name", secondaryText: "juana Antoleia",
+                  CustomSettingContainer(primaryText: "Name", secondaryText: widget.userModel!.name,
                   trailWidget:Icon(Icons.chevron_right),
                   tooltip: "username"
                   
@@ -77,12 +80,21 @@ class _SettingScreenState extends State<SettingScreen> {
                   SizedBox(
                     height: 20,
                   ),
-                   CustomSettingContainer(primaryText: "email", secondaryText: "j@gmmmmail.com",
+                   CustomSettingContainer(primaryText: "email", secondaryText: widget.userModel!.email,
                   trailWidget:Icon(Icons.chevron_right),
                   tooltip: "email"
                   
                   
                    , leading: Icons.person_4),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  CustomSettingContainer(primaryText: "bio", secondaryText: widget.userModel!.bio,
+                      trailWidget:Icon(Icons.accessibility_new),
+                      tooltip: "bio"
+
+
+                      , leading: Icons.person_4),
                   const SizedBox(
                     height: 20,
                   ),
