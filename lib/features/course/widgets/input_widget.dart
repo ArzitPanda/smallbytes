@@ -20,7 +20,7 @@ class TextInput extends StatelessWidget {
       onChanged: onChanged,
       decoration: InputDecoration(
         filled: true,
-        fillColor: Colors.deepOrange.shade50,
+        fillColor: Colors.white70,
         label: Text(
           placeholder ?? "Enter your text",
           style: TextStyle(color: CustomColors.primary),

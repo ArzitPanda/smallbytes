@@ -1,5 +1,4 @@
-
-
+// ignore: file_names
 import 'package:smallbytes/features/questions/models/question.dart';
 
 class MCQSet {
@@ -7,6 +6,7 @@ class MCQSet {
   String difficulty;
   List<String> tags;
   double duration;
+
   List<Question> questions;
 
   MCQSet({

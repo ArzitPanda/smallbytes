@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:smallbytes/core/constant/colors.dart';
 import 'package:smallbytes/core/widget/primary_button.dart';
 import 'package:smallbytes/features/course/widgets/input_widget.dart';
+import 'package:smallbytes/features/questions/models/mcq_Set.dart';
 import 'package:smallbytes/features/questions/models/question.dart';
+import 'package:smallbytes/features/questions/screens/confirm_mcq_screen.dart';
 
 class CreateMCQScreen extends StatefulWidget {
   @override
@@ -11,6 +13,7 @@ class CreateMCQScreen extends StatefulWidget {
 
 class _CreateMCQScreenState extends State<CreateMCQScreen> {
   TextEditingController _questionCountController = TextEditingController();
+  TextEditingController _nameController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -23,6 +26,12 @@ class _CreateMCQScreenState extends State<CreateMCQScreen> {
           padding: const EdgeInsets.all(12.0),
           child: Column(
             children: [
+              TextInput(
+                controller: _nameController,
+                placeholder: "Enter your course name",
+
+              ),
+               SizedBox(height: 20),
               TextInput(
                 controller: _questionCountController,
                 placeholder: "Enter the number of questions",
@@ -37,6 +46,7 @@ class _CreateMCQScreenState extends State<CreateMCQScreen> {
                     MaterialPageRoute(
                       builder: (context) => QuestionPageView(
                         questionCount: questionCount,
+                        questionSetName: _nameController.text.trim(),
                       ),
                     ),
                   );
@@ -52,8 +62,9 @@ class _CreateMCQScreenState extends State<CreateMCQScreen> {
 
 class QuestionPageView extends StatefulWidget {
   final int questionCount;
+  final String questionSetName;
 
-  QuestionPageView({required this.questionCount});
+  QuestionPageView({required this.questionCount,required this.questionSetName});
 
   @override
   _QuestionPageViewState createState() => _QuestionPageViewState();
@@ -108,7 +119,12 @@ class _QuestionPageViewState extends State<QuestionPageView> {
                           );
                         } else {
                           // Save the MCQ set and go back to the main screen
-                          Navigator.pop(context, questions);
+                       MCQSet  set =   MCQSet(name: widget.questionSetName, difficulty: "EASY", tags: ["tag1"], duration: 250, questions: questions);
+                       Navigator.push(context, MaterialPageRoute(builder: (context)=>ConfirmMcqScreen(set: set)));
+
+
+
+
                         }
                       },
                     ),
@@ -136,27 +152,30 @@ class _QuestionPageViewState extends State<QuestionPageView> {
         ),
         SizedBox(height: 10),
         ...List.generate(4, (optionIndex) {
-          return Row(
-            children: [
-              Expanded(
-                child: TextInput(
-                  controller: TextEditingController(text: question.options[optionIndex]),
-                  placeholder: "Option ${optionIndex + 1}",
+          return Padding(
+            padding: const EdgeInsets.symmetric(vertical: 10),
+            child: Row(
+              children: [
+                Expanded(
+                  child: TextInput(
+                    controller: TextEditingController(text: question.options[optionIndex]),
+                    placeholder: "Option ${optionIndex + 1}",
+                    onChanged: (value) {
+                      question.options[optionIndex] = value;
+                    },
+                  ),
+                ),
+                Radio<int>(
+                  value: optionIndex,
+                  groupValue: question.correctOption,
                   onChanged: (value) {
-                    question.options[optionIndex] = value;
+                    setState(() {
+                      question.correctOption = value!;
+                    });
                   },
                 ),
-              ),
-              Radio<int>(
-                value: optionIndex,
-                groupValue: question.correctOption,
-                onChanged: (value) {
-                  setState(() {
-                    question.correctOption = value!;
-                  });
-                },
-              ),
-            ],
+              ],
+            ),
           );
         }),
         SizedBox(height: 10),
