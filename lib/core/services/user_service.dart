@@ -7,6 +7,11 @@ import 'package:smallbytes/core/models/user_model.dart';
 
 class UserService {
   UserModel? userModel;
+  static UserModel? _userModelStatic;
+
+  UserModel? get userModelStatic => _userModelStatic;
+
+
 
   Databases database = Databases(AppwriteClient().client);
 
@@ -34,6 +39,12 @@ class UserService {
           uid: resultmap["uid"],
           bio: resultmap["bio"],
           profile_picture: resultmap["profile_picture"]);
+
+       if(_userModelStatic==null)
+         {
+           _userModelStatic=userModel;
+         }
+
 
       return userModel;
     } catch (error) {

@@ -75,7 +75,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
             children: [
               GestureDetector(child: PrimaryWrapperWidget(primaryChild: Text("My Courses")),onTap: (){
-      Navigator.push(context, MaterialPageRoute(builder: (context)=>SelfCoursesScreen()));
+      Navigator.push(context, MaterialPageRoute(builder: (context)=>SelfCoursesScreen(userModel: widget.userModel,)));
 
               },),
               SizedBox(height: 20,),

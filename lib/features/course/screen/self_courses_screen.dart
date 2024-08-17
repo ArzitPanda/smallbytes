@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:smallbytes/core/constant/colors.dart';
+import 'package:smallbytes/core/models/user_model.dart';
 import 'package:smallbytes/core/widget/primary_button.dart';
 import 'package:smallbytes/features/course/screen/create_course_screen.dart';
 import 'package:smallbytes/features/questions/screens/create_questions.dart';
 
 class SelfCoursesScreen extends StatefulWidget {
-  const SelfCoursesScreen({super.key});
+  UserModel? userModel;
+
+  SelfCoursesScreen({super.key,required this.userModel});
 
   @override
   State<SelfCoursesScreen> createState() => _SelfCoursesScreenState();
@@ -69,8 +72,8 @@ class _SelfCoursesScreenState extends State<SelfCoursesScreen> {
           color: Colors.white,
         ),
       ),
-      body: const Center(
-        child: Text("hello"),
+      body:  Center(
+        child: Text(widget.userModel!.id ?? "loading.."),
       ),
     );
   }

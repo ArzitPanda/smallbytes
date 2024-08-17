@@ -47,13 +47,13 @@ class Course {
       tags: List<String>.from(jsonDecode(json["tags"])),
       isPublished: json["isPublished"],
       content: List<String>.from(jsonDecode(json["content"])),
-      contentUrls: List<String>.from(jsonDecode(json["contentUrls"])),
+      contentUrls: List<String>.from(jsonDecode(json["content_urls"])),
       level: json["level"],
-      createdAt: DateTime.parse(json["createdAt"]),
-      courseTakerId: json["courseTakerId"] != null
-          ? List<String>.from(jsonDecode(json["courseTakerId"]))
+      createdAt: DateTime.parse(json["created_at"]),
+      courseTakerId: json["course_taker"] != null
+          ? List<String>.from(jsonDecode(json["course_taker"]))
           : null,
-      userCourseCreatorId: json["userCourseCreatorId"],
+      userCourseCreatorId: json["user_course_creator"],
     );
   }
 }
