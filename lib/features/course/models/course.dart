@@ -44,16 +44,16 @@ class Course {
     return Course(
       name: json["name"],
       description: json["description"],
-      tags: List<String>.from(jsonDecode(json["tags"])),
+      tags: List.empty(),
       isPublished: json["isPublished"],
-      content: List<String>.from(jsonDecode(json["content"])),
-      contentUrls: List<String>.from(jsonDecode(json["content_urls"])),
+      content:List.empty(),
+      contentUrls:List.empty(),
       level: json["level"],
       createdAt: DateTime.parse(json["created_at"]),
-      courseTakerId: json["course_taker"] != null
-          ? List<String>.from(jsonDecode(json["course_taker"]))
-          : null,
-      userCourseCreatorId: json["user_course_creator"],
+      courseTakerId: null,
+      userCourseCreatorId: "1234",
     );
+
+    
   }
 }

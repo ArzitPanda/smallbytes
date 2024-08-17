@@ -50,7 +50,9 @@ class CourseService {
           Query.orderDesc('created_at'),
         ],
       );
+print(result.documents.length);
 
+      
       return result.documents.map((doc) => Course.fromJson(doc.data)).toList();
     } catch (error) {
       print('Error fetching courses: ${error.toString()}');

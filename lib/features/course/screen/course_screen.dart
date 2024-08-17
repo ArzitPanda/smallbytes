@@ -128,6 +128,10 @@ class _CourseScreenState extends State<CourseScreen> {
                 ),
               ),
             ),
+        _courses.isEmpty ? SliverToBoxAdapter(
+          child: Text("no course found"),
+        ):
+
             SliverPadding(
               padding: EdgeInsets.all(16),
               sliver: SliverGrid(
@@ -142,17 +146,17 @@ class _CourseScreenState extends State<CourseScreen> {
                     return CourseCard(
                       imgUrl: "https://images.unsplash.com/photo-1518773553398-650c184e0bb3",
                       length: "30m",
-                      name: "UI & UX Design",
-                      description: "Learn the fundamentals of UI/UX design",
+                      name: _courses[index].name,
+                      description: _courses[index].description,
                       onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => SingleCourseScreen()),
+                          MaterialPageRoute(builder: (context) => SingleCourseScreen(course: _courses[index],)),
                         );
                       },
                     );
                   },
-                  childCount: 10, // Replace with actual course count
+                  childCount: _courses.length, // Replace with actual course count
                 ),
               ),
             ),

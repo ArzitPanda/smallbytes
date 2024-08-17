@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:smallbytes/core/widget/primary_button.dart';
 import 'package:smallbytes/core/widget/round_button.dart';
+import 'package:smallbytes/features/course/models/course.dart';
 
 class SingleCourseScreen extends StatefulWidget {
-  const SingleCourseScreen({super.key});
+  Course course;
+
+SingleCourseScreen({super.key,required this.course});
 
   @override
   State<SingleCourseScreen> createState() => _SingleCourseScreenState();
