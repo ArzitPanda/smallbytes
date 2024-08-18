@@ -4,6 +4,7 @@ import 'package:smallbytes/core/constant/colors.dart';
 import 'package:smallbytes/core/services/user_service.dart';
 import 'package:smallbytes/features/course/screen/course_screen.dart';
 import 'package:smallbytes/features/profile/screen/profile_screen.dart';
+import 'package:smallbytes/features/questions/screens/questions_screen.dart';
 import 'package:smallbytes/features/settings/screen/setting_screen.dart';
 import 'package:smallbytes/core/models/user_model.dart';
 
@@ -48,6 +49,7 @@ class _HomeScreenState extends State<HomeScreen> {
     // Actual content when userModel is loaded
     List<Widget> tabs = [
       CourseScreen(userModel: service.userModel!),
+      QuestionsScreen(userModel: service.userModel!,),
       ProfileScreen(userModel: service.userModel!),
       SettingScreen(userModel: service.userModel!),
     ];
@@ -62,15 +64,19 @@ class _HomeScreenState extends State<HomeScreen> {
         height: 75,
         items: const <Widget>[
           Padding(
-            padding: EdgeInsets.all(8.0),
+            padding: EdgeInsets.all(2.0),
             child: Icon(Icons.book, size: 30, color: Colors.white),
           ),
           Padding(
-            padding: EdgeInsets.all(8.0),
+            padding: EdgeInsets.all(2.0),
+            child: Icon(Icons.queue_sharp, size: 30, color: Colors.white),
+          ),
+          Padding(
+            padding: EdgeInsets.all(2.0),
             child: Icon(Icons.person, size: 30, color: Colors.white),
           ),
           Padding(
-            padding: EdgeInsets.all(8.0),
+            padding: EdgeInsets.all(2.0),
             child: Icon(Icons.settings, size: 30, color: Colors.white),
           ),
         ],

@@ -44,10 +44,10 @@ class Course {
     return Course(
       name: json["name"],
       description: json["description"],
-      tags: List.empty(),
+      tags:(json['tags'] as List<dynamic>).map((ele)=>(ele as String)).toList(),
       isPublished: json["isPublished"],
-      content:List.empty(),
-      contentUrls:List.empty(),
+      content:(json['content'] as List<dynamic>).map((ele)=>(ele as String)).toList(),
+      contentUrls:(json['content_urls'] as List<dynamic>).map((ele)=>(ele as String)).toList(),
       level: json["level"],
       createdAt: DateTime.parse(json["created_at"]),
       courseTakerId: null,
